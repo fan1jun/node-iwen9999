@@ -1,722 +1,703 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Network - Protect Earth</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>AI与环境：赛博朋克未来</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        :root {
-            --primary: #2e7d32;
-            --secondary: #4caf50;
-            --accent: #8bc34a;
-            --light: #e8f5e9;
-            --dark: #1b5e20;
-            --text: #333333;
-            --white: #ffffff;
-        }
-
+        
         body {
-            background-color: var(--light);
-            color: var(--text);
+            font-family: 'Exo 2', sans-serif;
+            background-color: #0a0a1a;
+            color: #e0e0ff;
+            overflow-x: hidden;
             line-height: 1.6;
+            position: relative;
         }
-
-        header {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: var(--white);
-            padding: 1rem 0;
-            position: sticky;
+        
+        /* 背景效果 */
+        .cyber-background {
+            position: fixed;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-
-        .logo i {
-            font-size: 2rem;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 2rem;
-        }
-
-        nav ul li a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 0;
-            position: relative;
-        }
-
-        nav ul li a:hover {
-            color: var(--accent);
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
             left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 80vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: var(--white);
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--accent);
-            color: var(--white);
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        section {
-            padding: 5rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent);
-            border-radius: 2px;
-        }
-
-        .section-title p {
-            color: var(--text);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-img {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .about-img img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .about-img:hover img {
-            transform: scale(1.05);
-        }
-
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 2rem 1rem;
-            background-color: var(--white);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .stat-item i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .stat-item h3 {
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-item p {
-            color: var(--text);
-        }
-
-        .initiatives {
-            background-color: var(--white);
-        }
-
-        .initiatives-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .initiative-card {
-            background-color: var(--light);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .initiative-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .initiative-img {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .initiative-img img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+            z-index: -2;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(41, 196, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 20, 138, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 119, 198, 0.05) 0%, transparent 50%),
+                linear-gradient(to bottom, #0a0a1a, #0d0d24);
         }
-
-        .initiative-card:hover .initiative-img img {
-            transform: scale(1.1);
-        }
-
-        .initiative-content {
-            padding: 1.5rem;
-        }
-
-        .initiative-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .initiative-content p {
-            margin-bottom: 1.5rem;
-        }
-
-        .cta {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: var(--white);
-            text-align: center;
-            padding: 5rem 0;
-        }
-
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta .btn {
-            background-color: var(--white);
-            color: var(--primary);
-        }
-
-        .cta .btn:hover {
-            background-color: var(--accent);
-            color: var(--white);
-        }
-
-        footer {
-            background-color: var(--dark);
-            color: var(--white);
-            padding: 3rem 0 1rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
+        
+        .grid-overlay {
+            position: fixed;
+            top: 0;
             left: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--accent);
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            pointer-events: none;
         }
-
-        .footer-column p {
-            margin-bottom: 1rem;
+        
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to bottom, transparent, rgba(0, 255, 255, 0.5), transparent);
+            z-index: 999;
+            animation: scan 4s linear infinite;
+            pointer-events: none;
         }
-
-        .footer-links {
-            list-style: none;
+        
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
         }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
+        
+        /* 容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
-
-        .footer-links li a {
-            color: var(--light);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .footer-links li a:hover {
-            color: var(--accent);
-            padding-left: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: var(--white);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background-color: var(--accent);
-            transform: translateY(-5px);
-        }
-
-        .copyright {
+        
+        /* 页眉 */
+        header {
             text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px 20px;
+            position: relative;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+            margin-bottom: 40px;
         }
-
-        .mobile-menu {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
+        
+        .title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #00ffff, #ff00ff, #00ffff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            animation: glow 3s ease-in-out infinite alternate;
         }
-
-        @media (max-width: 992px) {
-            .about-content {
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #a0a0ff;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        @keyframes glow {
+            0% { text-shadow: 0 0 15px rgba(0, 255, 255, 0.5); }
+            100% { text-shadow: 0 0 25px rgba(255, 0, 255, 0.7), 0 0 35px rgba(255, 0, 255, 0.4); }
+        }
+        
+        /* 主要内容区域 */
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        @media (max-width: 900px) {
+            .content {
                 grid-template-columns: 1fr;
             }
-            
-            .initiatives-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .card {
+            background: rgba(10, 15, 40, 0.7);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 5px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .card:hover {
+            border-color: rgba(255, 0, 255, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.2);
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .card:hover::before {
+            left: 100%;
+        }
+        
+        .card-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            color: #00ffff;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-title i {
+            margin-right: 15px;
+            font-size: 1.8rem;
+        }
+        
+        .card-content {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #c0c0ff;
+        }
+        
+        .positive {
+            border-top: 3px solid #00ffaa;
+        }
+        
+        .negative {
+            border-top: 3px solid #ff0066;
+        }
+        
+        /* 可视化区域 */
+        .visualization {
+            grid-column: span 2;
+            margin-top: 20px;
+            height: 400px;
+            background: rgba(5, 10, 30, 0.8);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 5px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @media (max-width: 900px) {
+            .visualization {
+                grid-column: span 1;
             }
         }
-
+        
+        .vis-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: #ff00ff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        #ai-environment-chart {
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* 数据点 */
+        .data-point {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(0, 255, 255, 0.8);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.5); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+        
+        /* 底部区域 */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(0, 255, 255, 0.3);
+            margin-top: 40px;
+        }
+        
+        .future-outlook {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-size: 1.2rem;
+            color: #a0a0ff;
+        }
+        
+        .cyber-quote {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            color: #00ffff;
+            margin: 30px 0;
+            padding: 20px;
+            border-left: 3px solid #ff00ff;
+            background: rgba(0, 255, 255, 0.05);
+        }
+        
+        .hologram-container {
+            position: relative;
+            height: 200px;
+            margin: 40px auto;
+            width: 90%;
+            max-width: 600px;
+            perspective: 1000px;
+        }
+        
+        .hologram {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 30%, rgba(0, 255, 255, 0.1) 70%);
+            clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 20% 100%);
+            animation: hologram-float 6s ease-in-out infinite;
+        }
+        
+        .hologram-inner {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: calc(100% - 20px);
+            height: calc(100% - 20px);
+            background: linear-gradient(to bottom, rgba(255, 0, 255, 0.05), rgba(0, 255, 255, 0.05));
+            clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 20% 100%);
+        }
+        
+        @keyframes hologram-float {
+            0%, 100% { transform: translateY(0) rotateX(5deg); }
+            50% { transform: translateY(-20px) rotateX(10deg); }
+        }
+        
+        /* 交互按钮 */
+        .cyber-button {
+            display: inline-block;
+            background: transparent;
+            color: #00ffff;
+            border: 1px solid #00ffff;
+            padding: 12px 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cyber-button:hover {
+            background: rgba(0, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            color: #ffffff;
+        }
+        
+        .cyber-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .cyber-button:hover::before {
+            left: 100%;
+        }
+        
+        /* 响应式调整 */
         @media (max-width: 768px) {
-            .hero h1 {
+            .title {
                 font-size: 2.5rem;
             }
             
-            .hero p {
-                font-size: 1.1rem;
+            .content {
+                gap: 20px;
             }
             
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--primary);
-                flex-direction: column;
-                padding: 1rem 0;
-                text-align: center;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            .card {
+                padding: 20px;
             }
             
-            nav ul.active {
-                display: flex;
+            .visualization {
+                height: 300px;
             }
-            
-            nav ul li {
-                margin: 0;
-                padding: 0.8rem 0;
-            }
-            
-            .mobile-menu {
-                display: block;
-            }
-            
-            .initiatives-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Animation for stats counter */
-        .counter {
-            transition: all 0.5s ease;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container nav-container">
-            <div class="logo">
-                <i class="fas fa-seedling"></i>
-                <span>Green Network</span>
-            </div>
-            <nav>
-                <div class="mobile-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#initiatives">Initiatives</a></li>
-                    <li><a href="#get-involved">Get Involved</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <h1>Protect Our Planet, Preserve Our Future</h1>
-            <p>Join the global movement to create a sustainable world through conservation, education, and community action.</p>
-            <a href="#get-involved" class="btn">Join Our Network</a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>About Green Network</h2>
-                <p>We are a global community dedicated to environmental protection and sustainable development.</p>
-            </div>
-            <div class="about-content">
-                <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Team planting trees">
-                </div>
-                <div class="about-text">
-                    <h3>Our Mission</h3>
-                    <p>Green Network is committed to creating a sustainable future by protecting natural ecosystems, promoting renewable energy, and empowering communities to take environmental action.</p>
-                    <p>Founded in 2010, we've grown from a small grassroots organization to an international network with over 50,000 members across 120 countries.</p>
-                    <p>Our approach combines scientific research, community engagement, and policy advocacy to address the most pressing environmental challenges of our time.</p>
-                    <a href="#" class="btn">Learn More</a>
-                </div>
-            </div>
-            <div class="stats">
-                <div class="stat-item">
-                    <i class="fas fa-tree"></i>
-                    <h3 class="counter" data-target="2500000">0</h3>
-                    <p>Trees Planted</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-users"></i>
-                    <h3 class="counter" data-target="50000">0</h3>
-                    <p>Active Members</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-globe-americas"></i>
-                    <h3 class="counter" data-target="120">0</h3>
-                    <p>Countries Reached</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-recycle"></i>
-                    <h3 class="counter" data-target="1500">0</h3>
-                    <p>Cleanup Projects</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Initiatives Section -->
-    <section class="initiatives" id="initiatives">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Initiatives</h2>
-                <p>Discover the key programs and projects we're implementing to protect our planet.</p>
-            </div>
-            <div class="initiatives-grid">
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://dialogue.earth/content/uploads/2021/04/lessons-from-the-rush-to-reforest-china-dialogue-2400x1599.jpg" alt="Reforestation">
-                    </div>
-                    <div class="initiative-content">
-                        <h3>Global Reforestation</h3>
-                        <p>Planting millions of trees worldwide to restore ecosystems, combat climate change, and protect biodiversity.</p>
-                        <a href="#" class="btn">Learn More</a>
+    <!-- 背景元素 -->
+    <div class="cyber-background"></div>
+    <div class="grid-overlay"></div>
+    <div class="scanline"></div>
+    
+    <!-- 数据点动画 -->
+    <div class="data-point" style="top: 15%; left: 10%;"></div>
+    <div class="data-point" style="top: 25%; left: 85%; animation-delay: 0.5s;"></div>
+    <div class="data-point" style="top: 65%; left: 15%; animation-delay: 1s;"></div>
+    <div class="data-point" style="top: 80%; left: 90%; animation-delay: 1.5s;"></div>
+    <div class="data-point" style="top: 40%; left: 5%; animation-delay: 2s;"></div>
+    
+    <div class="container">
+        <!-- 页眉 -->
+        <header>
+            <h1 class="title">AI与环境</h1>
+            <p class="subtitle">在赛博朋克未来中，人工智能与自然环境形成复杂共生关系。AI既是环境问题的解决者，也可能成为新危机的创造者。探索两者之间的动态平衡与未来可能性。</p>
+        </header>
+        
+        <!-- 主要内容区域 -->
+        <main>
+            <div class="content">
+                <!-- 正面影响卡片 -->
+                <div class="card positive">
+                    <h2 class="card-title">
+                        <span style="color: #00ffaa;">✓</span> AI对环境积极影响
+                    </h2>
+                    <div class="card-content">
+                        <p><strong>智能资源管理：</strong>AI优化能源分配，减少浪费，提升可再生能源效率。</p>
+                        <p><strong>污染监测与控制：</strong>实时监测环境数据，预测污染扩散，快速响应生态危机。</p>
+                        <p><strong>气候建模与预测：</strong>通过复杂算法模拟气候变化，为政策制定提供科学依据。</p>
+                        <p><strong>生物多样性保护：</strong>AI驱动的监控系统防止非法狩猎，跟踪濒危物种迁徙模式。</p>
+                        <p><strong>智能农业：</strong>精准农业减少农药使用，优化灌溉，提升粮食生产可持续性。</p>
                     </div>
                 </div>
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Ocean Conservation">
-                    </div>
-                    <div class="initiative-content">
-                        <h3>Ocean Conservation</h3>
-                        <p>Protecting marine ecosystems, reducing plastic pollution, and promoting sustainable fishing practices.</p>
-                        <a href="#" class="btn">Learn More</a>
+                
+                <!-- 负面影响卡片 -->
+                <div class="card negative">
+                    <h2 class="card-title">
+                        <span style="color: #ff0066;">⚠</span> AI对环境潜在风险
+                    </h2>
+                    <div class="card-content">
+                        <p><strong>高能耗基础设施：</strong>AI数据中心消耗大量能源，可能加剧碳足迹。</p>
+                        <p><strong>电子废物增加：</strong>硬件快速迭代导致大量难以回收的电子垃圾。</p>
+                        <p><strong>资源开采压力：</strong>制造AI硬件需要稀有矿物，加剧采矿环境破坏。</p>
+                        <p><strong>算法优化盲点：</strong>单一目标优化可能忽略生态系统的复杂关联性。</p>
+                        <p><strong>监控与控制的滥用：</strong>环境监测技术可能被用于资源掠夺而非保护。</p>
                     </div>
                 </div>
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="Renewable Energy">
-                    </div>
-                    <div class="initiative-content">
-                        <h3>Renewable Energy</h3>
-                        <p>Promoting solar, wind, and other clean energy sources to reduce dependence on fossil fuels.</p>
-                        <a href="#" class="btn">Learn More</a>
+                
+                <!-- 可视化区域 -->
+                <div class="visualization">
+                    <h3 class="vis-title">AI-环境交互关系可视化</h3>
+                    <div id="ai-environment-chart">
+                        <!-- 可视化图表将通过JavaScript生成 -->
+                        <canvas id="cyber-chart"></canvas>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta" id="get-involved">
-        <div class="container">
-            <h2>Join Our Global Movement</h2>
-            <p>Together, we can create a sustainable future for generations to come. Every action counts, no matter how small.</p>
-            <a href="#" class="btn">Become a Member</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Green Network</h3>
-                    <p>We are dedicated to protecting our planet through collaborative action, education, and sustainable solutions.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#initiatives">Initiatives</a></li>
-                        <li><a href="#get-involved">Get Involved</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Our Programs</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Reforestation</a></li>
-                        <li><a href="#">Ocean Cleanup</a></li>
-                        <li><a href="#">Wildlife Protection</a></li>
-                        <li><a href="#">Climate Education</a></li>
-                        <li><a href="#">Sustainable Agriculture</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Copper Creek Drive, New York</p>
-                    <p><i class="fas fa-phone"></i> +1 (312) 171-0771</p>
-                    <p><i class="fas fa-envelope"></i> support@greennetwork.org</p>
-                </div>
+            
+            <!-- 全息投影区域 -->
+            <div class="hologram-container">
+                <div class="hologram"></div>
+                <div class="hologram-inner"></div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 Green Network. All rights reserved.</p>
+            
+            <!-- 赛博朋克引用 -->
+            <div class="cyber-quote">
+                "在霓虹与阴影交织的未来，算法与生态系统必须找到和谐共鸣的频率。"
             </div>
-        </div>
-    </footer>
+            
+            <!-- 交互按钮 -->
+            <div style="text-align: center; margin: 40px 0;">
+                <button class="cyber-button" id="simulate-btn">模拟未来场景</button>
+                <button class="cyber-button" id="data-btn">加载环境数据</button>
+                <button class="cyber-button" id="toggle-view">切换视角</button>
+            </div>
+        </main>
+        
+        <!-- 底部区域 -->
+        <footer>
+            <div class="future-outlook">
+                <h3 style="color: #ff00ff; margin-bottom: 15px; font-family: 'Orbitron', sans-serif;">未来展望：共生还是支配？</h3>
+                <p>在赛博朋克式未来中，AI与环境的关系将定义人类文明的方向。通过负责任的设计、透明的算法和可持续的实践，我们可以引导AI成为地球生态系统的守护者，而非剥削者。</p>
+                <p>关键在于建立跨学科合作框架，将生态智慧与人工智能融合，创造既能推动技术进步又能维护生态平衡的解决方案。</p>
+            </div>
+            
+            <div style="margin-top: 40px; color: #8080cc; font-size: 0.9rem;">
+                <p>© 2077 赛博环境研究所 | 数据来源：全球环境监测网络 | 可视化引擎：Neuro-Vis v3.2</p>
+                <p style="margin-top: 10px; font-size: 0.8rem;">警告：此界面包含模拟未来数据，仅供研究与讨论使用</p>
+            </div>
+        </footer>
+    </div>
 
     <script>
-        // Mobile Menu Toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('nav ul').classList.toggle('active');
-        });
-
-        // Counter Animation
-        function animateCounters() {
-            const counters = document.querySelectorAll('.counter');
-            const speed = 200; // The lower the slower
+        // 初始化图表
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取Canvas上下文
+            const canvas = document.getElementById('cyber-chart');
+            const ctx = canvas.getContext('2d');
             
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
+            // 设置Canvas尺寸
+            canvas.width = document.getElementById('ai-environment-chart').offsetWidth;
+            canvas.height = document.getElementById('ai-environment-chart').offsetHeight - 40;
+            
+            // 图表数据
+            const years = [2020, 2025, 2030, 2035, 2040, 2045, 2050];
+            const aiAdoption = [15, 30, 50, 70, 85, 95, 99];
+            const environmentalHealth = [65, 60, 58, 62, 70, 78, 85];
+            const energyConsumption = [100, 130, 150, 140, 120, 100, 85];
+            
+            // 绘制函数
+            function drawChart() {
+                // 清除画布
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
                 
-                const inc = target / speed;
+                // 设置图表区域
+                const margin = { top: 30, right: 40, bottom: 50, left: 60 };
+                const chartWidth = canvas.width - margin.left - margin.right;
+                const chartHeight = canvas.height - margin.top - margin.bottom;
                 
-                if(count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(animateCounters, 1);
-                } else {
-                    counter.innerText = target;
-                }
-            });
-        }
-
-        // Initialize counters when page loads
-        window.addEventListener('load', animateCounters);
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
+                // 比例尺
+                const xScale = (value) => margin.left + (value - 2020) * (chartWidth / (2050 - 2020));
+                const yScale = (value) => margin.top + chartHeight - (value * chartHeight / 100);
                 
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
+                // 绘制网格
+                ctx.strokeStyle = 'rgba(0, 255, 255, 0.1)';
+                ctx.lineWidth = 1;
                 
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
+                // 水平网格线
+                for (let i = 0; i <= 100; i += 20) {
+                    const y = yScale(i);
+                    ctx.beginPath();
+                    ctx.moveTo(margin.left, y);
+                    ctx.lineTo(margin.left + chartWidth, y);
+                    ctx.stroke();
                     
-                    document.querySelector('nav ul').classList.remove('active');
+                    // 网格标签
+                    ctx.fillStyle = 'rgba(0, 255, 255, 0.6)';
+                    ctx.font = '12px Orbitron';
+                    ctx.fillText(i + '%', margin.left - 35, y + 4);
                 }
+                
+                // 垂直网格线
+                for (let i = 0; i < years.length; i++) {
+                    const x = xScale(years[i]);
+                    ctx.beginPath();
+                    ctx.moveTo(x, margin.top);
+                    ctx.lineTo(x, margin.top + chartHeight);
+                    ctx.stroke();
+                    
+                    // 年份标签
+                    ctx.fillStyle = 'rgba(255, 0, 255, 0.7)';
+                    ctx.font = '12px Orbitron';
+                    ctx.fillText(years[i], x - 10, margin.top + chartHeight + 20);
+                }
+                
+                // 绘制数据线
+                function drawLine(data, color, label) {
+                    ctx.beginPath();
+                    ctx.moveTo(xScale(years[0]), yScale(data[0]));
+                    
+                    for (let i = 1; i < years.length; i++) {
+                        ctx.lineTo(xScale(years[i]), yScale(data[i]));
+                    }
+                    
+                    ctx.strokeStyle = color;
+                    ctx.lineWidth = 3;
+                    ctx.stroke();
+                    
+                    // 数据点
+                    for (let i = 0; i < years.length; i++) {
+                        ctx.beginPath();
+                        ctx.arc(xScale(years[i]), yScale(data[i]), 5, 0, Math.PI * 2);
+                        ctx.fillStyle = color;
+                        ctx.fill();
+                        ctx.strokeStyle = '#ffffff';
+                        ctx.lineWidth = 1;
+                        ctx.stroke();
+                    }
+                    
+                    // 图例
+                    const legendX = canvas.width - 180;
+                    const legendY = 20 + (['AI采用率', '环境健康', '能源消耗'].indexOf(label) * 25);
+                    
+                    ctx.fillStyle = color;
+                    ctx.fillRect(legendX, legendY, 15, 10);
+                    
+                    ctx.fillStyle = '#e0e0ff';
+                    ctx.font = '14px Exo 2';
+                    ctx.fillText(label, legendX + 20, legendY + 9);
+                }
+                
+                // 绘制三条数据线
+                drawLine(aiAdoption, '#00ffff', 'AI采用率');
+                drawLine(environmentalHealth, '#00ffaa', '环境健康');
+                drawLine(energyConsumption, '#ff00ff', '能源消耗');
+                
+                // 图表标题
+                ctx.fillStyle = '#ffffff';
+                ctx.font = '16px Orbitron';
+                ctx.fillText('AI发展与环境指标关系 (2020-2050预测)', canvas.width / 2 - 150, 20);
+            }
+            
+            // 初始绘制
+            drawChart();
+            
+            // 窗口调整大小时重绘
+            window.addEventListener('resize', function() {
+                canvas.width = document.getElementById('ai-environment-chart').offsetWidth;
+                canvas.height = document.getElementById('ai-environment-chart').offsetHeight - 40;
+                drawChart();
             });
+            
+            // 按钮交互
+            document.getElementById('simulate-btn').addEventListener('click', function() {
+                // 添加一些动画效果
+                this.innerHTML = "模拟中...";
+                this.style.background = "rgba(0, 255, 255, 0.2)";
+                
+                // 创建一些随机数据点
+                for (let i = 0; i < 8; i++) {
+                    const point = document.createElement('div');
+                    point.className = 'data-point';
+                    point.style.top = Math.random() * 80 + 10 + '%';
+                    point.style.left = Math.random() * 80 + 10 + '%';
+                    point.style.animationDelay = Math.random() * 2 + 's';
+                    document.body.appendChild(point);
+                    
+                    // 3秒后移除
+                    setTimeout(() => {
+                        point.remove();
+                    }, 3000);
+                }
+                
+                setTimeout(() => {
+                    this.innerHTML = "模拟完成";
+                    this.style.background = "transparent";
+                    
+                    // 3秒后恢复文本
+                    setTimeout(() => {
+                        this.innerHTML = "模拟未来场景";
+                    }, 2000);
+                }, 1500);
+                
+                // 显示提示
+                showNotification("正在运行2077年环境情景模拟...");
+            });
+            
+            document.getElementById('data-btn').addEventListener('click', function() {
+                this.innerHTML = "数据加载中...";
+                
+                setTimeout(() => {
+                    this.innerHTML = "数据已加载";
+                    
+                    // 更新图表数据
+                    for (let i = 0; i < environmentalHealth.length; i++) {
+                        environmentalHealth[i] += (Math.random() * 10 - 5);
+                        environmentalHealth[i] = Math.max(30, Math.min(95, environmentalHealth[i]));
+                        
+                        energyConsumption[i] += (Math.random() * 10 - 5);
+                        energyConsumption[i] = Math.max(70, Math.min(150, energyConsumption[i]));
+                    }
+                    
+                    drawChart();
+                    
+                    // 3秒后恢复文本
+                    setTimeout(() => {
+                        this.innerHTML = "加载环境数据";
+                    }, 2000);
+                }, 1000);
+                
+                showNotification("环境数据流已更新，重新校准可视化...");
+            });
+            
+            document.getElementById('toggle-view').addEventListener('click', function() {
+                const cards = document.querySelectorAll('.card');
+                const currentColor = getComputedStyle(cards[0]).borderTopColor;
+                
+                // 切换卡片边框颜色
+                cards.forEach(card => {
+                    if (currentColor.includes('rgb(0, 255, 170)')) {
+                        card.style.borderTopColor = 'rgb(0, 150, 255)';
+                    } else if (currentColor.includes('rgb(0, 150, 255)')) {
+                        card.style.borderTopColor = 'rgb(255, 0, 102)';
+                    } else {
+                        card.style.borderTopColor = 'rgb(0, 255, 170)';
+                    }
+                });
+                
+                // 切换标题颜色
+                const title = document.querySelector('.title');
+                if (title.style.background.includes('rgb(0, 255, 255)')) {
+                    title.style.background = 'linear-gradient(to right, #ff00ff, #00ffaa, #ff00ff)';
+                } else {
+                    title.style.background = 'linear-gradient(to right, #00ffff, #ff00ff, #00ffff)';
+                }
+                
+                showNotification("视角已切换，重新渲染界面...");
+            });
+            
+            // 显示通知函数
+            function showNotification(message) {
+                // 创建通知元素
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: rgba(10, 20, 40, 0.9);
+                    border: 1px solid #00ffff;
+                    color: #00ffff;
+                    padding: 15px;
+                    font-family: 'Orbitron', sans-serif;
+                    font-size: 14px;
+                    z-index: 1000;
+                    max-width: 300px;
+                    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+                    animation: slideIn 0.5s ease, fadeOut 0.5s ease 2.5s forwards;
+                `;
+                
+                notification.textContent = message;
+                document.body.appendChild(notification);
+                
+                // 3秒后移除
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+            }
+            
+            // 添加CSS动画
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                @keyframes fadeOut {
+                    from { opacity: 1; }
+                    to { opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
         });
     </script>
 </body>
-
 </html>
